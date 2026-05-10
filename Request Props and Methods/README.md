@@ -14,7 +14,6 @@ You work directly with request data and learn how servers read client input.
 * [🧠 Key Concepts](#key-concepts)
 * [🧪 Example Requests](#example-requests)
 * [🎯 What You Gain](#what-you-gain)
-* [🚀 Next Steps](#next-steps)
 
 ---
 
@@ -229,14 +228,6 @@ Content-Type: application/json
 * Work with real HTTP data
 * Debug APIs easily
 * Build backend confidence
-
----
-
-<a id="next-steps"></a>
-
-## 🚀 Next Steps
-
----
 
 ## 🤝 Contributing
 
