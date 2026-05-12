@@ -1,6 +1,3 @@
-You’re right. Table of contents should jump to sections.
-
-Here is the fixed README with proper internal links.
 
 ---
 
