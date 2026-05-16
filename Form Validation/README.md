@@ -147,5 +147,5 @@ https://ejs.co/
 
 ## ✨ Author
 
-Bracket Developer
+Mian Ammar Salar (Bracket Developer)
 https://github.com/bracketdeveloper
