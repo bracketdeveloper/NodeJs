@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Form</title>
+
+  <!-- Bootstrap for layout and styling -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <style>
+    /* Error text styling */
+    .error-text {
+      font-size: 13px;
+      color: #dc3545;
+      margin-top: 4px;
+      display: block;
+    }
+
+    /* Make multi-select taller */
+    .form-select {
+      min-height: 120px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container py-5">
+    <div class="card p-4 col-lg-6 mx-auto">
+      <h4 class="mb-4">Create Account</h4>
+
+      <!-- Form sends data to backend route -->
+      <form action="/submit-form" method="post">
+
+        <!-- Full Name field -->
+        <div class="form-floating mb-2">
+          <input type="text" name="full_name" id="full_name"
+            class="form-control <%= errorObj.full_name ? 'is-invalid' : '' %>"
+            value="<%= oldInput.full_name || '' %>" />
+          <label for="full_name">Full Name</label>
+        </div>
+        <% if (errorObj.full_name) { %>
+          <div class="error-text"><%= errorObj.full_name %></div>
+        <% } %>
+
+        <!-- Email field -->
+        <div class="form-floating mb-2">
+          <input type="email" name="email" id="email"
+            class="form-control <%= errorObj.email ? 'is-invalid' : '' %>"
+            value="<%= oldInput.email || '' %>" />
+          <label for="email">Email</label>
+        </div>
+        <% if (errorObj.email) { %>
+          <div class="error-text"><%= errorObj.email %></div>
+        <% } %>
+
+        <!-- Password field -->
+        <div class="form-floating mb-2">
+          <input type="password" name="password" id="password"
+            class="form-control <%= errorObj.password ? 'is-invalid' : '' %>"
+            value="<%= oldInput.password || '' %>" />
+          <label for="password">Password</label>
+        </div>
+        <% if (errorObj.password) { %>
+          <div class="error-text"><%= errorObj.password %></div>
+        <% } %>
+
+        <!-- Phone field -->
+        <div class="form-floating mb-2">
+          <input type="tel" name="phone" id="phone"
+            class="form-control <%= errorObj.phone ? 'is-invalid' : '' %>"
+            value="<%= oldInput.phone || '' %>" />
+          <label for="phone">Phone</label>
+        </div>
+        <% if (errorObj.phone) { %>
+          <div class="error-text"><%= errorObj.phone %></div>
+        <% } %>
+
+        <!-- Country dropdown -->
+        <div class="form-floating mb-2">
+          <select name="country" id="country"
+            class="form-select <%= errorObj.country ? 'is-invalid' : '' %>">
+            <option disabled <%= !oldInput.country ? 'selected' : '' %>>Select</option>
+            <option value="pk" <%= oldInput.country === 'pk' ? 'selected' : '' %>>Pakistan</option>
+            <option value="uk" <%= oldInput.country === 'uk' ? 'selected' : '' %>>UK</option>
+            <option value="de" <%= oldInput.country === 'de' ? 'selected' : '' %>>Germany</option>
+          </select>
+          <label for="country">Country</label>
+        </div>
+        <% if (errorObj.country) { %>
+          <div class="error-text"><%= errorObj.country %></div>
+        <% } %>
+
+        <!-- Gender radio buttons -->
+        <div class="mb-2">
+          <label class="form-label small text-muted">Gender</label>
+
+          <div class="<%= errorObj.gender ? 'border border-danger p-2 rounded' : '' %>">
+
+            <!-- Male option -->
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="gender" value="male" id="male"
+                <%= oldInput.gender === 'male' ? 'checked' : '' %> />
+              <label class="form-check-label" for="male">Male</label>
+            </div>
+
+            <!-- Female option -->
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="gender" value="female" id="female"
+                <%= oldInput.gender === 'female' ? 'checked' : '' %> />
+              <label class="form-check-label" for="female">Female</label>
+            </div>
+
+          </div>
+        </div>
+        <% if (errorObj.gender) { %>
+          <div class="error-text"><%= errorObj.gender %></div>
+        <% } %>
+
+        <!-- Skills multi-select -->
+        <div class="mb-3">
+          <label for="skills" class="form-label small text-muted">
+            Skills (select multiple)
+          </label>
+
+          <select name="skills" id="skills" multiple size="4"
+            class="form-select <%= errorObj.skills ? 'is-invalid' : '' %>">
+
+            <option value="html" <%= oldInput.skills?.includes('html') ? 'selected' : '' %>>HTML</option>
+            <option value="css" <%= oldInput.skills?.includes('css') ? 'selected' : '' %>>CSS</option>
+            <option value="js" <%= oldInput.skills?.includes('js') ? 'selected' : '' %>>JavaScript</option>
+
+          </select>
+
+          <% if (errorObj.skills) { %>
+            <div class="error-text"><%= errorObj.skills %></div>
+          <% } %>
+        </div>
+
+        <!-- Message box -->
+        <div class="form-floating mb-2">
+          <textarea name="message" id="message"
+            class="form-control <%= errorObj.message ? 'is-invalid' : '' %>"
+            style="height: 100px"><%= oldInput.message || '' %></textarea>
+          <label for="message">Message</label>
+        </div>
+        <% if (errorObj.message) { %>
+          <div class="error-text"><%= errorObj.message %></div>
+        <% } %>
+
+        <!-- Terms checkbox -->
+        <div class="form-check mb-2">
+          <input class="form-check-input <%= errorObj.terms ? 'is-invalid' : '' %>"
+            type="checkbox" name="terms" id="terms"
+            <%= oldInput.terms ? 'checked' : '' %> />
+
+          <label class="form-check-label" for="terms">
+            I agree to terms
+          </label>
+        </div>
+
+        <% if (errorObj.terms) { %>
+          <div class="error-text"><%= errorObj.terms %></div>
+        <% } %>
+
+        <!-- Submit button -->
+        <button class="btn btn-primary w-100 mt-3">Submit</button>
+
+      </form>
+    </div>
+  </div>
+</body>
+</html>
