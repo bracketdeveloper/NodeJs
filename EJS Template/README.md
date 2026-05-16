@@ -15,7 +15,6 @@ You move from simple templates to a full e-commerce dashboard.
 * [📁 Project Structure](#project-structure)
 * [📚 Tasks Overview](#tasks-overview)
 * [🧠 Key Concepts](#key-concepts)
-* [🏆 Capstone Project](#capstone-project)
 * [🎯 What You Learn](#what-you-learn)
 * [🚀 Next Steps](#next-steps)
 * [🤝 Contributing](#contributing)
@@ -154,8 +153,6 @@ EJS-Learning/
 * Role-based access
 
 ---
-<a id="capstone-project"></a>
-## 🏆 Capstone Project
 
 ### 🛒 E-Commerce Product Page
 
